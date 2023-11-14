@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - master
-
+env:
+  WEBSITE_UUID: ${{ vars.WEBSITE_UUID }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
