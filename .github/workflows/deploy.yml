@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - master
-env:
-  WEBSITE_UUID: ${{ vars.WEBSITE_UUID }}
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -30,4 +29,4 @@ jobs:
           APILLON_API_KEY: ${{ secrets.APILLON_API_KEY }}
           APILLON_API_SECRET: ${{ secrets.APILLON_API_SECRET }}
           WEBSITE_UUID: ${{ secrets.WEBSITE_UUID }}
-        run: npx --yes @apillon/cli hosting deploy-website ./dist --uuid $WEBSITE_UUID --key $APILLON_API_KEY --secret $APILLON_API_SECRET --api-url https://api-staging.apillon.io
+        run: npx --yes @apillon/cli hosting deploy-website ./dist --uuid ${{ vars.WEBSITE_UUID }} --key $APILLON_API_KEY --secret $APILLON_API_SECRET --api-url https://api-staging.apillon.io
